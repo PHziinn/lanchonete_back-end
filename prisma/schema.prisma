@@ -23,3 +23,9 @@ model Pedido {
   atendimento Boolean @default(false)
   pratos      Prato[]
 }
+
+model Usuario {
+  usuarioId String @id
+  email String @unique
+  senha String
+}

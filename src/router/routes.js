@@ -1,8 +1,23 @@
 import { Router } from 'express';
 import PratosControllers from '../controllers/PratosControllers.js';
 import PedidosControllers from '../controllers/PedidosControllers.js';
+import UserControllers from '../controllers/UserControllers.js';
+import verificaToken from '../../auth/authUser.js';
+
+
+
+
+
+
 
 const router = Router();
+
+// Rotar de Criação de Pratos
+router.post('/registrar/user', verificaToken, UserControllers.registrarUser);
+router.post('/login/user', UserControllers.loginUser);
+
+
+
 
 // Rotar de Criação de Pratos
 router.post('/criar/prato', PratosControllers.createPrato);
