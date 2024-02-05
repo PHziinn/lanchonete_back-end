@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Prato {
+  id           Int      @id @default(autoincrement())
+  nome         String
+  descricao    String
+  ingredientes String
+  valor        Float    @default(0.0) @db.Real
+  tempoPreparo Int
+  pedidos      Pedido[]
+}
+
+model Pedido {
+  id          Int     @id @default(autoincrement())
+  mesa        Int
+  atendimento Boolean @default(false)
+  pratos      Prato[]
+}
