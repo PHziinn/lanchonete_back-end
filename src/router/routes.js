@@ -2,7 +2,7 @@ import { Router } from 'express';
 import PratosControllers from '../controllers/PratosControllers.js';
 import PedidosControllers from '../controllers/PedidosControllers.js';
 import UserControllers from '../controllers/UserControllers.js';
-import verificaToken from '../../auth/authUser.js';
+import verificaToken from '../middlewares/authMiddleware.js'
 
 
 
@@ -17,15 +17,15 @@ router.post('/login/user', UserControllers.loginUser);
 
 
 // Rotar de Criação de Pratos
-router.post('/criar/prato', PratosControllers.createPrato);
+router.post('/criar/prato', verificaToken.authUser, PratosControllers.createPrato);
 // Rotar para Listrar Pratos
 router.get('/listrar/pratos', PratosControllers.listPratos);
 // Rotar para Listrar Prato Por IDs
 router.get('/listrar/prato/:id', PratosControllers.listPrato);
 // Rotar para Atualizar Prato Por IDs
-router.put('/atualizar/prato/:id', PratosControllers.updatePrato);
+router.put('/atualizar/prato/:id', verificaToken.authUser, PratosControllers.updatePrato);
 // Rotar para Deletar Pedido Por IDs
-router.delete('/deletar/prato/:id', PratosControllers.deletePrato);
+router.delete('/deletar/prato/:id', verificaToken.authUser, PratosControllers.deletePrato);
 
 
 
