@@ -1,5 +1,9 @@
 import express from 'express';
 import {router} from './src/router/routes.js';
+import { config as dotenvConfig } from 'dotenv-safe';
+
+dotenvConfig();
+
 
 const app = express();
 

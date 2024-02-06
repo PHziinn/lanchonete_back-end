@@ -7,13 +7,10 @@ import verificaToken from '../../auth/authUser.js';
 
 
 
-
-
-
 const router = Router();
 
 // Rotar de Criação de Pratos
-router.post('/registrar/user', verificaToken, UserControllers.registrarUser);
+router.post('/registrar/user', verificaToken.authUser, UserControllers.registrarUser);
 router.post('/login/user', UserControllers.loginUser);
 
 

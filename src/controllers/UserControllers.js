@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 import { prisma } from "../../config/connection.js";
 
+
 export default {
   async registrarUser(req, res) {
     const { email, senha } = req.body;
