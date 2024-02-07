@@ -5,15 +5,13 @@ import UserControllers from '../controllers/UserControllers.js';
 import verificaToken from '../middlewares/authMiddleware.js'
 
 
-
-
 const router = Router();
+
+
 
 // Rotar de Criação de Pratos
 router.post('/registrar/user', verificaToken.authUser, UserControllers.registrarUser);
 router.post('/login/user', UserControllers.loginUser);
-
-
 
 
 // Rotar de Criação de Pratos
@@ -26,7 +24,6 @@ router.get('/listrar/prato/:id', PratosControllers.listPrato);
 router.put('/atualizar/prato/:id', verificaToken.authUser, PratosControllers.updatePrato);
 // Rotar para Deletar Pedido Por IDs
 router.delete('/deletar/prato/:id', verificaToken.authUser, PratosControllers.deletePrato);
-
 
 
 
