@@ -1,19 +1,28 @@
 {
   "swagger": "2.0",
   "info": {
+    "version": "1.0.0",
     "title": "API Lanchonete",
-    "description": "Description",
-    "version": "1.0.0"
+    "description": "API REST Lanchonete"
   },
-  "host": "localhost:3000",
-  "basePath": "/",
+  "host": "devstudiosws.xyz",
+  "basePath": "",
   "schemes": [
+    "https",
     "http"
   ],
+  "securityDefinitions": {
+    "AccessToken": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "authorization"
+    }
+  },
   "paths": {
     "/registrar/user": {
       "post": {
         "description": "",
+        "tags": ["Registrar"],
         "parameters": [
           {
             "name": "authorization",
@@ -27,10 +36,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "admin@admin.com"
                 },
                 "senha": {
-                  "example": "any"
+                  "example": "admin"
                 }
               }
             }
@@ -55,6 +64,7 @@
     "/login/user": {
       "post": {
         "description": "",
+        "tags": ["Login"],
         "parameters": [
           {
             "name": "body",
@@ -63,10 +73,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "admin@admin.com"
                 },
                 "senha": {
-                  "example": "any"
+                  "example": "admin"
                 }
               }
             }
@@ -85,6 +95,7 @@
     "/criar/prato": {
       "post": {
         "description": "",
+        "tags": ["Prato"],
         "parameters": [
           {
             "name": "authorization",
@@ -98,19 +109,19 @@
               "type": "object",
               "properties": {
                 "nome": {
-                  "example": "any"
+                  "example": "Hamburguer"
                 },
                 "descricao": {
-                  "example": "any"
+                  "example": "é um alimento em forma de sanduíche, feito geralmente de carne bovina, picada ou moída, grelhada, assada ou frita"
                 },
                 "ingredientes": {
-                  "example": "any"
+                  "example": "Pão, Salada, Queijo, Ovo"
                 },
                 "valor": {
-                  "example": "any"
+                  "example": "10.5"
                 },
                 "tempoPreparo": {
-                  "example": "any"
+                  "example": "30"
                 }
               }
             }
@@ -132,6 +143,7 @@
     "/listrar/pratos": {
       "get": {
         "description": "",
+        "tags": ["Prato"],
         "responses": {
           "200": {
             "description": "OK"
@@ -145,6 +157,7 @@
     "/listrar/prato/{id}": {
       "get": {
         "description": "",
+        "tags": ["Prato"],
         "parameters": [
           {
             "name": "id",
@@ -166,6 +179,7 @@
     "/atualizar/prato/{id}": {
       "put": {
         "description": "",
+        "tags": ["Prato"],
         "parameters": [
           {
             "name": "id",
@@ -185,19 +199,7 @@
               "type": "object",
               "properties": {
                 "nome": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "ingredientes": {
-                  "example": "any"
-                },
-                "valor": {
-                  "example": "any"
-                },
-                "tempoPreparo": {
-                  "example": "any"
+                  "example": "Hamburguer"
                 }
               }
             }
@@ -219,6 +221,7 @@
     "/deletar/prato/{id}": {
       "delete": {
         "description": "",
+        "tags": ["Prato"],
         "parameters": [
           {
             "name": "id",
@@ -251,6 +254,7 @@
     "/criar/pedidos": {
       "post": {
         "description": "",
+        "tags": ["Pedido"],
         "parameters": [
           {
             "name": "body",
@@ -259,10 +263,10 @@
               "type": "object",
               "properties": {
                 "mesa": {
-                  "example": "any"
+                  "example": "1"
                 },
                 "pratos": {
-                  "example": "any"
+                  "example": "4"
                 }
               }
             }
@@ -281,6 +285,7 @@
     "/listrar/pedidos": {
       "get": {
         "description": "",
+        "tags": ["Pedido"],
         "responses": {
           "200": {
             "description": "OK"
@@ -294,6 +299,7 @@
     "/listrar/pedido/{id}": {
       "get": {
         "description": "",
+        "tags": ["Pedido"],
         "parameters": [
           {
             "name": "id",
@@ -315,6 +321,7 @@
     "/atualizar/pedido/{id}": {
       "put": {
         "description": "",
+        "tags": ["Pedido"],
         "parameters": [
           {
             "name": "id",
@@ -329,7 +336,7 @@
               "type": "object",
               "properties": {
                 "atendimento": {
-                  "example": "any"
+                  "example": "true"
                 }
               }
             }
@@ -348,6 +355,7 @@
     "/deletar/pedidos/{id}": {
       "delete": {
         "description": "",
+        "tags": ["Pedido"],
         "parameters": [
           {
             "name": "id",
@@ -369,5 +377,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "AccessToken": []
+    }
+  ]
 }
