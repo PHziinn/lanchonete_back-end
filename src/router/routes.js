@@ -4,8 +4,9 @@ import PedidosControllers from '../controllers/PedidosControllers.js';
 import UserControllers from '../controllers/UserControllers.js';
 import verificaToken from '../middlewares/authMiddleware.js'
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../../config/swagger-output.json' assert { type: "json" };
-
+import { readFileSync } from 'fs';
+const fileData = readFileSync('./config/swagger-output.json', 'utf-8');
+const swaggerDocument = JSON.parse(fileData);
 
 const router = Router();
 
