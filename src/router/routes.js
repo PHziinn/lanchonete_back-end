@@ -5,8 +5,17 @@ import UserControllers from '../controllers/UserControllers.js';
 import verificaToken from '../middlewares/authMiddleware.js'
 import swaggerUi from 'swagger-ui-express';
 import { readFileSync } from 'fs';
-const fileData = readFileSync('./config/swagger-output.json', 'utf-8');
+// import dd from '../../config/swagger-output.json'
+const fileData = readFileSync('config/swagger-output.json', 'utf8');
 const swaggerDocument = JSON.parse(fileData);
+
+import EventEmitter from 'events';
+// other modules 
+
+class Emitter extends EventEmitter { }
+
+const emitter = new Emitter();
+emitter.setMaxListeners(1000);
 
 const router = Router();
 
